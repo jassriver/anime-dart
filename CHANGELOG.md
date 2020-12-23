@@ -1,6 +1,6 @@
 # Changelog
 
-### `vMAJOR.MINOR.PATCH` - DD/MM/YYYY`
+### `vMAJOR.MINOR.PATCH - DD/MM/YYYY`
 `Features`, `Diff's`, `Fixes`, etc. Any changes come here
 
 <br>
