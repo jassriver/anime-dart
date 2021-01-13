@@ -1,7 +1,6 @@
-import 'package:anime_dart/app/shared/enums/app_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../shared/enums/app_color_scheme.dart';
 import '../../shared/interfaces/state_controller.dart';
 
 class ThemeController extends StateController {

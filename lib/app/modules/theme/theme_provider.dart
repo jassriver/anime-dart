@@ -1,5 +1,6 @@
-import 'package:anime_dart/app/modules/theme/theme_controller.dart';
 import 'package:flutter/cupertino.dart';
+
+import 'theme_controller.dart';
 
 class ThemeProvider extends InheritedWidget {
   final ThemeController themeController;

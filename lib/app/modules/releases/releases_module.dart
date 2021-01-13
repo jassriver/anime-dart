@@ -1,8 +1,7 @@
-import 'package:anime_dart/app/modules/releases/releases_controller.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'releases_controller.dart';
 import 'releases_page.dart';
 
 class ReleasesModule extends WidgetModule {

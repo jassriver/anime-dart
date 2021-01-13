@@ -45,10 +45,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             BottomNavigationBarItem(
               icon: Icon(
                 OMIcons.home,
+                // TODO: Remove raw size
                 size: 30.0,
               ),
               activeIcon: Icon(
                 Icons.home,
+                // TODO: Remove raw size
                 size: 30.0,
               ),
               label: 'Home',
@@ -56,10 +58,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             BottomNavigationBarItem(
               icon: Icon(
                 OMIcons.newReleases,
+                // TODO: Remove raw size
                 size: 30.0,
               ),
               activeIcon: Icon(
                 Icons.new_releases,
+                // TODO: Remove raw size
                 size: 30.0,
               ),
               label: 'Releases',

@@ -1,7 +1,8 @@
-import 'package:anime_dart/app/modules/home/home_content/home_content_controller.dart';
-import 'package:anime_dart/app/modules/home/home_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../home_controller.dart';
+import 'home_content_controller.dart';
 
 class HomeContentPage extends StatefulWidget {
   HomeContentPage({Key key}) : super(key: key);
