@@ -31,6 +31,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         animation: _valueController,
         builder: (_, __) => tabs[_valueController.value],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: controller.increment,
+        child: Icon(Icons.add),
+      ),
       bottomNavigationBar: AnimatedBuilder(
         animation: _valueController,
         builder: (_, __) => BottomNavigationBar(
