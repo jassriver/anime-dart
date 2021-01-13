@@ -1,12 +1,12 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../blocs/counter/counter_bloc.dart';
+import '../../controllers/counter/counter_controller.dart';
 import 'home_widget.dart';
 
 class HomeModule extends ChildModule {
   @override
   List<Bind> get binds => [
-        Bind<CounterBloc>((_) => CounterBloc()),
+        Bind<CounterController>((_) => CounterController()),
       ];
 
   @override

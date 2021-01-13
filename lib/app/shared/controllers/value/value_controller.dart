@@ -1,0 +1,9 @@
+import '../../interfaces/state_controller.dart';
+
+class ValueController<T> extends StateController {
+  T value;
+
+  ValueController({T initialValue}) : value = initialValue;
+
+  void set(T newValue) async => setState(() => value = newValue);
+}

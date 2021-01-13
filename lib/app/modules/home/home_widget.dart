@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../blocs/counter/counter_bloc.dart';
+import '../../controllers/counter/counter_controller.dart';
 
 class HomeWidget extends StatefulWidget {
   HomeWidget({Key key}) : super(key: key);
@@ -10,7 +10,7 @@ class HomeWidget extends StatefulWidget {
   _HomeWidgetState createState() => _HomeWidgetState();
 }
 
-class _HomeWidgetState extends ModularState<HomeWidget, CounterBloc> {
+class _HomeWidgetState extends ModularState<HomeWidget, CounterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,11 +24,11 @@ class _HomeWidgetState extends ModularState<HomeWidget, CounterBloc> {
             Text(
               'You have pushed the button this many times:',
             ),
-            StreamBuilder(
-              stream: controller.stream,
-              builder: (context, snapshot) {
+            AnimatedBuilder(
+              animation: controller,
+              builder: (_, __) {
                 return Text(
-                  '${snapshot.data}',
+                  '${controller.loading ? "Loading" : controller.count}',
                   style: Theme.of(context).textTheme.headline4,
                 );
               },
