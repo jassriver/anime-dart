@@ -1,6 +1,8 @@
-import 'package:flutter_modular/flutter_modular.dart';
+import '../../../shared/interfaces/state_controller.dart';
 
-class HomeContentController implements Disposable {
+class HomeContentController extends StateController {
   @override
-  void dispose() {}
+  void dispose() {
+    super.dispose();
+  }
 }

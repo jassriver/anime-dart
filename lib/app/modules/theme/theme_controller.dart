@@ -4,9 +4,14 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../shared/interfaces/state_controller.dart';
 
-class ThemeController extends StateController implements Disposable {
+class ThemeController extends StateController {
   ThemeMode theme = ThemeMode.system;
   AppColorScheme colorScheme = AppColorScheme.monochrome;
+
+  void initialize() {
+    // TODO: First, load the last theme from cache
+    // theme = Cache.getKey("theme") ?? theme;
+  }
 
   void setTheme(final ThemeMode newTheme) {
     setState(() => theme = newTheme);

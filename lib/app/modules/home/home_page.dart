@@ -52,15 +52,23 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             BottomNavigationBarItem(
               icon: Icon(
                 OMIcons.newReleases,
+                size: 30.0,
               ),
               activeIcon: Icon(
                 Icons.new_releases,
+                size: 30.0,
               ),
               label: 'Releases',
             ),
             BottomNavigationBarItem(
-              icon: Icon(OMIcons.folder),
-              activeIcon: Icon(Icons.folder),
+              icon: Icon(
+                OMIcons.folder,
+                size: 30.0,
+              ),
+              activeIcon: Icon(
+                Icons.folder,
+                size: 30.0,
+              ),
               label: 'Library',
             ),
           ],
