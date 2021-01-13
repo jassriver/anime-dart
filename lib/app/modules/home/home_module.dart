@@ -1,19 +1,25 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../controllers/counter/counter_controller.dart';
-import 'home_widget.dart';
+import '../../shared/controllers/value/value_controller.dart';
+import 'home_controller.dart';
+import 'home_page.dart';
 
 class HomeModule extends ChildModule {
   @override
   List<Bind> get binds => [
-        Bind<CounterController>((_) => CounterController()),
+        Bind<HomeController>(
+          (_) => HomeController(),
+        ),
+        Bind<ValueController<int>>(
+          (_) => ValueController<int>(initialValue: 0),
+        ),
       ];
 
   @override
   List<ModularRouter> get routers => [
-        ModularRouter(
+        ModularRouter<HomePage>(
           '/',
-          child: (_, __) => HomeWidget(),
+          child: (_, __) => HomePage(),
         ),
       ];
 }

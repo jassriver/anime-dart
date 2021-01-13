@@ -5,5 +5,5 @@ class ValueController<T> extends StateController {
 
   ValueController({T initialValue}) : value = initialValue;
 
-  void set(T newValue) async => setState(() => value = newValue);
+  void set(T newValue) => setState(() => value = newValue);
 }
