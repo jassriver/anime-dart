@@ -1,8 +1,8 @@
-import 'package:anime_dart/app/shared/state/builders/state_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../shared/state/builders/state_builder.dart';
 import '../../theme/theme_controller.dart';
 import '../../theme/theme_provider.dart';
 import '../home_controller.dart';
