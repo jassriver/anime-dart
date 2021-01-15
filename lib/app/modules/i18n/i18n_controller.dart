@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
-import '../../shared/state/state_controller.dart';
+import '../../shared/state/controllers/state_controller.dart';
 import 'i18n_config.dart';
 
 class I18nController extends StateController {

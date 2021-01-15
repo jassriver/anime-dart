@@ -1,4 +1,4 @@
-import '../../shared/state/state_controller.dart';
+import '../../shared/state/controllers/state_controller.dart';
 
 class LibraryController extends StateController {
   @override

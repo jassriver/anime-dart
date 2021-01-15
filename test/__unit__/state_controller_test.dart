@@ -1,5 +1,6 @@
-import 'package:anime_dart/app/shared/state/state_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import 'package:anime_dart/app/shared/state/controllers/state_controller.dart';
 
 void main() {
   test('MockCounterController should not fire listeners', () {
