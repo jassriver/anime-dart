@@ -1,15 +1,21 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import 'theme_controller.dart';
 
 class ThemeProvider extends InheritedWidget {
   final ThemeController themeController;
+  final Widget child;
 
-  const ThemeProvider({
-    Widget child,
+  ThemeProvider({
+    Key key,
+    this.child,
     this.themeController,
-  }) : super(child: child);
+  }) : super(key: key, child: child);
 
   @override
-  bool updateShouldNotify(covariant InheritedWidget oldWidget) => false;
+  bool updateShouldNotify(InheritedWidget oldWidget) => false;
+
+  static ThemeProvider of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<ThemeProvider>();
+  }
 }

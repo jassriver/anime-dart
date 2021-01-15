@@ -1,0 +1,5 @@
+ui:
+  continue: Continue
+  clicked-0: You clicked {n} times!
+  clicked-1: You clicked {n} time!
+  clicked-2: You clicked {n} times!

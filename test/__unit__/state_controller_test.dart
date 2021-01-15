@@ -1,18 +1,6 @@
 import 'package:anime_dart/app/shared/interfaces/state_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-class MockCounterController extends StateController {
-  int state = 0;
-
-  void increment() {
-    state++;
-  }
-
-  void incrementAsAction() {
-    setState(() => state++);
-  }
-}
-
 void main() {
   test('MockCounterController should not fire listeners', () {
     final mockCounterController = MockCounterController();
@@ -23,7 +11,7 @@ void main() {
 
     mockCounterController.increment();
 
-    expect(mockCounterController.state, mockCounterController.state);
+    expect(mockCounterController.state, 1);
   });
 
   test('MockCounterController should fire listeners', () {
@@ -39,4 +27,16 @@ void main() {
 
     expect(called, true);
   });
+}
+
+class MockCounterController extends StateController {
+  int state = 0;
+
+  void increment() {
+    state++;
+  }
+
+  void incrementAsAction() {
+    setState(() => state++);
+  }
 }

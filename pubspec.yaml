@@ -12,6 +12,12 @@ dependencies:
   flutter_modular:
   flutter_i18n:
   outline_material_icons:
+  sqflite:
+  path:
+  country_pickers:
+  get_it:
+  path_provider:
+  shared_preferences:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0

@@ -5,10 +5,10 @@ class HomeController extends StateController {
 
   bool get isZero => count == 0;
 
-  void increment() => setState(() => ++count);
-
   @override
   void dispose() {
     super.dispose();
   }
+
+  void increment() => setState(() => ++count);
 }
