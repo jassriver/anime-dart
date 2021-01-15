@@ -1,4 +1,4 @@
-import 'package:anime_dart/app/shared/interfaces/state_controller.dart';
+import 'package:anime_dart/app/shared/state/state_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

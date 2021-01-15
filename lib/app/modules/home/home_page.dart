@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 
 import '../../shared/controllers/value/value_controller.dart';
+import '../../shared/state/state_builder.dart';
 import '../library/library_module.dart';
 import '../releases/releases_module.dart';
 import 'home_content/home_content_module.dart';
@@ -27,8 +28,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnimatedBuilder(
-        animation: _valueController,
+      body: StateBuilder(
+        controller: _valueController,
         builder: (_, __) => tabs[_valueController.value],
       ),
       floatingActionButton: FloatingActionButton(

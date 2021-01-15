@@ -5,6 +5,8 @@ import 'package:get_it/get_it.dart';
 
 import 'app/modules/cache/cache_manager.dart';
 import 'app/modules/cache/local_storage.dart';
+import 'app/modules/i18n/i18n_config.dart';
+import 'app/modules/i18n/i18n_controller.dart';
 import 'app/modules/theme/theme_config.dart';
 import 'app/modules/theme/theme_controller.dart';
 
@@ -28,16 +30,22 @@ Future<void> _setupI18n() async {
 
   await flutterI18nDelegate.load(null);
 
+  final i18nController = I18nController(
+    I18nConfig(
+      cacheKey: 'APP_LOCALE',
+      cacheManager: CacheManager(LocalStorage()),
+    ),
+  );
+
+  getIt.registerSingleton<I18nController>(i18nController);
   getIt.registerSingleton<LocalizationsDelegate>(flutterI18nDelegate);
 }
 
 Future<void> _setupTheme() async {
-  final cacheManager = CacheManager(LocalStorage());
-
   final themeController = ThemeController(
     ThemeConfig(
       cacheKey: 'APP_THEME',
-      cacheManager: cacheManager,
+      cacheManager: CacheManager(LocalStorage()),
     ),
   );
 

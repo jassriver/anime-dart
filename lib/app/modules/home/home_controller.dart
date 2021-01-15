@@ -1,4 +1,4 @@
-import '../../shared/interfaces/state_controller.dart';
+import '../../shared/state/state_controller.dart';
 
 class HomeController extends StateController {
   int count = 0;

@@ -1,9 +1,8 @@
-import 'package:country_pickers/country.dart';
-import 'package:country_pickers/country_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../shared/state/state_builder.dart';
 import '../../theme/theme_controller.dart';
 import '../../theme/theme_provider.dart';
 import '../home_controller.dart';
@@ -62,8 +61,8 @@ class _HomeContentPageState
               },
             ),
             Center(
-              child: AnimatedBuilder(
-                animation: _homeController,
+              child: StateBuilder(
+                controller: _homeController,
                 builder: (context, child) {
                   return Text(
                     FlutterI18n.plural(
@@ -76,41 +75,6 @@ class _HomeContentPageState
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildDialogItem(Country country) => Row(
-        children: <Widget>[
-          CountryPickerUtils.getDefaultFlagImage(country),
-          SizedBox(width: 8.0),
-          Text("+${country.phoneCode}"),
-          SizedBox(width: 8.0),
-          Flexible(child: Text(country.name))
-        ],
-      );
-
-  void _openCountryPickerDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => Theme(
-        data: Theme.of(context).copyWith(primaryColor: Colors.pink),
-        child: CountryPickerDialog(
-          titlePadding: EdgeInsets.all(8.0),
-          searchCursorColor: Colors.pinkAccent,
-          searchInputDecoration: InputDecoration(hintText: 'Search...'),
-          isSearchable: true,
-          title: Text('Select your phone code'),
-          onValuePicked: (country) {
-            print(country);
-          },
-          itemFilter: (c) => ['BR', 'US', 'GB', 'CN'].contains(c.isoCode),
-          priorityList: [
-            CountryPickerUtils.getCountryByIsoCode('TR'),
-            CountryPickerUtils.getCountryByIsoCode('US'),
-          ],
-          itemBuilder: _buildDialogItem,
         ),
       ),
     );

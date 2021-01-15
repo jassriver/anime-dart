@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 import '../../shared/enums/app_color_scheme.dart';
-import '../../shared/interfaces/state_controller.dart';
+import '../../shared/state/state_controller.dart';
 import 'theme_config.dart';
 
 class ThemeController extends StateController {
-  final ThemeConfig _themeConfig;
+  final ThemeConfig _config;
 
   ThemeMode theme;
 
   AppColorScheme colorScheme;
   var _initialized = false;
 
-  ThemeController(this._themeConfig);
+  ThemeController(this._config);
 
   @override
   void dispose() {
@@ -25,16 +25,16 @@ class ThemeController extends StateController {
   ) async {
     _initialized = true;
 
-    theme = await getInitialTheme(_themeConfig);
-    colorScheme = await getInitialColorScheme(_themeConfig);
+    theme = await getInitialTheme(_config);
+    colorScheme = await getInitialColorScheme(_config);
   }
 
   Future<void> resetDefault() async {
     assert(_initialized);
 
-    _themeConfig.cacheManager
-      ..deleteKey(_getThemeKey(_themeConfig))
-      ..deleteKey(_getColorSchemeKey(_themeConfig));
+    _config.cacheManager
+      ..deleteKey(_getThemeKey(_config))
+      ..deleteKey(_getColorSchemeKey(_config));
 
     setState(() => theme = ThemeMode.system);
   }
@@ -42,8 +42,8 @@ class ThemeController extends StateController {
   Future<void> setColorScheme(AppColorScheme newColorScheme) async {
     assert(_initialized);
 
-    await _themeConfig.cacheManager
-        .setKey(_getColorSchemeKey(_themeConfig), newColorScheme.toString());
+    await _config.cacheManager
+        .setKey(_getColorSchemeKey(_config), newColorScheme.toString());
 
     setState(() => colorScheme = newColorScheme);
   }
@@ -51,8 +51,8 @@ class ThemeController extends StateController {
   Future<void> setTheme(ThemeMode newTheme) async {
     assert(_initialized);
 
-    await _themeConfig.cacheManager
-        .setKey(_getThemeKey(_themeConfig), newTheme.toString());
+    await _config.cacheManager
+        .setKey(_getThemeKey(_config), newTheme.toString());
 
     setState(() => theme = newTheme);
   }
