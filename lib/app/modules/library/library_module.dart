@@ -13,9 +13,7 @@ class LibraryModule extends WidgetModule {
       ];
 
   @override
-  List<ModularRouter> get routers => [
-        ModularRouter<LibraryPage>('/', child: (_, __) => LibraryPage()),
-      ];
+  List<ModularRouter> get routers => [];
 
   @override
   Widget get view => LibraryPage();
