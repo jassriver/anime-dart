@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 
 import '../../shared/controllers/value/value_controller.dart';
-import '../../shared/state/builders/state_builder.dart';
+import '../../shared/state/state.dart';
 import '../library/library_module.dart';
 import '../releases/releases_module.dart';
 import 'home_content/home_content_module.dart';

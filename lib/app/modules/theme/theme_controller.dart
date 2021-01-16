@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../shared/enums/app_color_scheme.dart';
-import '../../shared/state/controllers/state_controller.dart';
+import '../../shared/state/state.dart';
 import 'theme_config.dart';
 
 typedef ThemeCacheHandler = Future<ThemeMode> Function(ThemeConfig);
@@ -32,6 +32,7 @@ class ThemeController extends StateController {
     colorScheme = await _getInitialColorScheme(_config);
   }
 
+  @action
   Future<void> resetDefault() async {
     _config.cacheManager
       ..deleteKey(_getThemeKey(_config))
@@ -40,6 +41,7 @@ class ThemeController extends StateController {
     setState(() => theme = ThemeMode.system);
   }
 
+  @action
   Future<void> setColorScheme(AppColorScheme newColorScheme) async {
     await _config.cacheManager
         .setKey(_getColorSchemeKey(_config), newColorScheme.toString());
@@ -47,6 +49,7 @@ class ThemeController extends StateController {
     setState(() => colorScheme = newColorScheme);
   }
 
+  @action
   Future<void> setTheme(ThemeMode newTheme) async {
     await _config.cacheManager
         .setKey(_getThemeKey(_config), newTheme.toString());

@@ -1,3 +1,3 @@
-import '../../shared/state/controllers/state_controller.dart';
+import '../../shared/state/state.dart';
 
 class ReleasesController extends StateController {}

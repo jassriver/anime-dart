@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
 import '../../shared/enums/app_language.dart';
-import '../../shared/state/controllers/state_controller.dart';
+import '../../shared/state/state.dart';
 import 'i18n_config.dart';
 
 typedef LocaleCacheHandler = Future<Locale> Function(I18nConfig, AppLanguage);
@@ -29,6 +29,7 @@ class I18nController extends StateController {
     sourcesLocale = await _getInitialLocale(_config, AppLanguage.sources);
   }
 
+  @action
   Future<void> setLocale(
     BuildContext context,
     Locale newLocale, {

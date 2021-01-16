@@ -1,4 +1,4 @@
-import '../../shared/state/controllers/state_controller.dart';
+import '../../shared/state/state.dart';
 
 class HomeController extends StateController {
   int count = 0;
@@ -10,5 +10,6 @@ class HomeController extends StateController {
     super.dispose();
   }
 
+  @action
   void increment() => setState(() => ++count);
 }

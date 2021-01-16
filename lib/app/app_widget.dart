@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'modules/i18n/i18n_controller.dart';
 import 'modules/theme/theme_controller.dart';
 import 'modules/theme/theme_provider.dart';
-import 'shared/state/builders/multi_state_builder.dart';
+import 'shared/state/state.dart';
 
 class AppWidget extends StatelessWidget {
   final _themeController = Modular.get<ThemeController>();
