@@ -43,11 +43,17 @@ class _I18nPageState extends State<I18nPage> {
                 );
               },
             ),
-            Text(
-              FlutterI18n.translate(
-                context,
-                'ui.continue',
-              ),
+            ElevatedButton(
+              child: Text('RU-RU'),
+              onPressed: () {
+                _i18nController.setLocale(
+                  context,
+                  Locale('ru', 'ru'),
+                );
+              },
+            ),
+            I18nText(
+              'ui.continue',
             ),
           ],
         ),

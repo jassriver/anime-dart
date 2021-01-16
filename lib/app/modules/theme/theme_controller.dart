@@ -4,34 +4,35 @@ import '../../shared/enums/app_color_scheme.dart';
 import '../../shared/state/controllers/state_controller.dart';
 import 'theme_config.dart';
 
+typedef ThemeCacheHandler = Future<ThemeMode> Function(ThemeConfig);
+typedef SchemeCacheHandler = Future<AppColorScheme> Function(ThemeConfig);
+
 class ThemeController extends StateController {
   final ThemeConfig _config;
+  final ThemeCacheHandler _getInitialTheme;
+  final SchemeCacheHandler _getInitialColorScheme;
 
   ThemeMode theme;
-
   AppColorScheme colorScheme;
-  var _initialized = false;
 
-  ThemeController(this._config);
+  ThemeController(
+    this._config, {
+    @required ThemeCacheHandler getInitialTheme,
+    @required SchemeCacheHandler getInitialColorScheme,
+  })  : _getInitialTheme = getInitialTheme,
+        _getInitialColorScheme = getInitialColorScheme;
 
   @override
   void dispose() {
     super.dispose();
   }
 
-  Future<void> initialize(
-    Future<ThemeMode> Function(ThemeConfig) getInitialTheme,
-    Future<AppColorScheme> Function(ThemeConfig) getInitialColorScheme,
-  ) async {
-    _initialized = true;
-
-    theme = await getInitialTheme(_config);
-    colorScheme = await getInitialColorScheme(_config);
+  Future<void> initialize() async {
+    theme = await _getInitialTheme(_config);
+    colorScheme = await _getInitialColorScheme(_config);
   }
 
   Future<void> resetDefault() async {
-    assert(_initialized);
-
     _config.cacheManager
       ..deleteKey(_getThemeKey(_config))
       ..deleteKey(_getColorSchemeKey(_config));
@@ -40,8 +41,6 @@ class ThemeController extends StateController {
   }
 
   Future<void> setColorScheme(AppColorScheme newColorScheme) async {
-    assert(_initialized);
-
     await _config.cacheManager
         .setKey(_getColorSchemeKey(_config), newColorScheme.toString());
 
@@ -49,8 +48,6 @@ class ThemeController extends StateController {
   }
 
   Future<void> setTheme(ThemeMode newTheme) async {
-    assert(_initialized);
-
     await _config.cacheManager
         .setKey(_getThemeKey(_config), newTheme.toString());
 
