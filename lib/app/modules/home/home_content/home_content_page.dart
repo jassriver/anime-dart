@@ -1,10 +1,11 @@
+import 'package:anime_dart/app/modules/theme/app_color_scheme.dart';
+import 'package:anime_dart/app/modules/theme/transition_barrier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../shared/state/builders/state_builder.dart';
 import '../../theme/theme_controller.dart';
-import '../../theme/theme_provider.dart';
 import '../home_controller.dart';
 import 'home_content_controller.dart';
 
@@ -18,9 +19,43 @@ class HomeContentPage extends StatefulWidget {
 class _HomeContentPageState
     extends ModularState<HomeContentPage, HomeContentController> {
   final _homeController = Modular.get<HomeController>();
+  final _themeController = Modular.get<ThemeController>();
 
-  ThemeController get _themeController =>
-      ThemeProvider.of(context).themeController;
+  void _changeTheme({
+    ThemeMode theme,
+    Color colorBase,
+    bool isMonochrome,
+  }) async {
+    final isDark = (theme ?? _themeController.theme) == ThemeMode.dark ||
+        _themeController.isSystemDarkMode;
+
+    final nextColorScheme = AppColorScheme(
+      SchemeConfig.fromColor(
+        colorBase ?? _themeController.colorBase,
+        isDark: isDark,
+        isMonochrome: isMonochrome ?? _themeController.isMonochrome,
+      ),
+    );
+
+    final barrierColor = nextColorScheme.background[isDark ? 1 : 0];
+
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      child: TransitionBarrier(
+        backgroundTask: () async {
+          await _themeController.setTheme(
+            colorBase: colorBase,
+            isMonochrome: isMonochrome,
+            theme: theme,
+          );
+
+          await Future.delayed(Duration(seconds: 1));
+        },
+        barrierColor: barrierColor,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,31 +65,61 @@ class _HomeContentPageState
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            RaisedButton(
+            ElevatedButton(
               child: Text('Dark Theme '),
               onPressed: () {
-                _themeController.setTheme(ThemeMode.dark);
+                _changeTheme(theme: ThemeMode.dark);
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Light Theme '),
               onPressed: () {
-                _themeController.setTheme(ThemeMode.light);
+                _changeTheme(theme: ThemeMode.light);
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('System Theme '),
               onPressed: () {
-                _themeController.setTheme(ThemeMode.light);
+                _changeTheme(theme: ThemeMode.system);
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Reset Default'),
               onPressed: () {
-                _themeController.setTheme(ThemeMode.light);
+                _themeController.resetDefault();
               },
             ),
-            RaisedButton(
+            ElevatedButton(
+              child: Text('Yellow Color Scheme'),
+              onPressed: () {
+                _changeTheme(colorBase: Colors.yellow);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Red Color Scheme'),
+              onPressed: () {
+                _changeTheme(colorBase: Colors.red);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Purple Color Scheme'),
+              onPressed: () {
+                _changeTheme(colorBase: Colors.purple);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Green Color Scheme'),
+              onPressed: () {
+                _changeTheme(colorBase: Colors.green);
+              },
+            ),
+            ElevatedButton(
+              child: Text('Cyan Color Scheme'),
+              onPressed: () {
+                _changeTheme(colorBase: Colors.cyan);
+              },
+            ),
+            ElevatedButton(
               child: Text('Change language'),
               onPressed: () {
                 Modular.navigator.pushNamed('/i18n');

@@ -1,9 +1,9 @@
 import '../../state/state.dart';
 
-class ValueController<T> extends StateController {
+class ValueController<T extends Object> extends StateController {
   T value;
 
-  ValueController({T initialValue}) : value = initialValue;
+  ValueController(this.value);
 
   @action
   void set(T newValue) => setState(() => value = newValue);

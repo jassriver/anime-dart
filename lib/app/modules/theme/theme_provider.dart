@@ -13,7 +13,7 @@ class ThemeProvider extends InheritedWidget {
   }) : super(key: key, child: child);
 
   @override
-  bool updateShouldNotify(InheritedWidget oldWidget) => false;
+  bool updateShouldNotify(ThemeProvider oldWidget) => true;
 
   static ThemeProvider of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<ThemeProvider>();

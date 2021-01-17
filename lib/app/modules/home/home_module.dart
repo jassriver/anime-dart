@@ -11,7 +11,7 @@ class HomeModule extends ChildModule {
           (_) => HomeController(),
         ),
         Bind<ValueController<int>>(
-          (_) => ValueController<int>(initialValue: 0),
+          (_) => ValueController<int>(0),
         ),
       ];
 

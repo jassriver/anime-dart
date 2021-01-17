@@ -18,6 +18,8 @@ dependencies:
   get_it:
   path_provider:
   shared_preferences:
+  equatable:
+  vector_math:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0

@@ -1,3 +1,4 @@
+import 'package:anime_dart/app/modules/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
@@ -24,6 +25,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   ];
 
   final _valueController = Modular.get<ValueController<int>>();
+  ThemeController get _themeController =>
+      ThemeProvider.of(context).themeController;
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +37,13 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: controller.increment,
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+          color: _themeController.colorScheme.text.button,
+        ),
       ),
-      bottomNavigationBar: AnimatedBuilder(
-        animation: _valueController,
+      bottomNavigationBar: StateBuilder<ValueController<int>>(
+        controller: _valueController,
         builder: (_, __) => BottomNavigationBar(
           currentIndex: _valueController.value,
           showUnselectedLabels: false,
@@ -58,12 +64,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                OMIcons.newReleases,
                 // TODO: Remove raw size
+                Icons.whatshot_outlined,
                 size: 30.0,
               ),
               activeIcon: Icon(
-                Icons.new_releases,
+                Icons.whatshot,
                 // TODO: Remove raw size
                 size: 30.0,
               ),

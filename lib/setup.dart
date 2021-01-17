@@ -59,8 +59,9 @@ Future<void> _setupTheme() async {
       cacheKey: 'APP_THEME',
       cacheManager: CacheManager(LocalStorage()),
     ),
-    getInitialColorScheme: ThemeController.getInitialColorScheme,
+    getInitialColorBase: ThemeController.getInitialColorBase,
     getInitialTheme: ThemeController.getInitialTheme,
+    getInitialMonochrome: ThemeController.getInitialMonochrome,
   );
 
   themeController.initialize();

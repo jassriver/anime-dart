@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
@@ -7,12 +8,11 @@ import 'i18n_config.dart';
 
 typedef LocaleCacheHandler = Future<Locale> Function(I18nConfig, AppLanguage);
 
-class I18nController extends StateController {
+class I18nController extends ConfigurationController {
   final LocaleCacheHandler _getInitialLocale;
   final I18nConfig _config;
 
-  Locale locale;
-  Locale sourcesLocale;
+  _I18nState _state;
 
   I18nController(
     this._config, {
@@ -24,9 +24,33 @@ class I18nController extends StateController {
     super.dispose();
   }
 
+  @override
+  Future<Map<String, dynamic>> exportToJson() {
+    // TODO: implement exportToJson
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> importFromJson(Map<String, dynamic> json) {
+    // TODO: implement importFromJson
+    throw UnimplementedError();
+  }
+
+  @override
   Future<void> initialize() async {
-    locale = await _getInitialLocale(_config, AppLanguage.interface);
-    sourcesLocale = await _getInitialLocale(_config, AppLanguage.sources);
+    final locale = <AppLanguage, Locale>{};
+
+    for (final langContext in AppLanguage.values) {
+      locale[langContext] = await _getInitialLocale(_config, langContext);
+    }
+
+    _state = _I18nState(locale);
+  }
+
+  @override
+  Future<void> resetDefault() {
+    // TODO: implement resetDefault
+    throw UnimplementedError();
   }
 
   @action
@@ -47,7 +71,12 @@ class I18nController extends StateController {
 
     await FlutterI18n.refresh(context, newLocale);
 
-    setState(() => locale = newLocale);
+    final newState = _I18nState({
+      ...(_state?.locale ?? <AppLanguage, Locale>{}),
+      langContext: newLocale,
+    });
+
+    if (_state != newState) setState(() => _state = newState);
   }
 
   static Future<Locale> getInitialLocale(
@@ -71,4 +100,18 @@ class I18nController extends StateController {
   static String _getLangCodeKey(I18nConfig config, AppLanguage targetContext) {
     return '${config.cacheKey}__${targetContext.toString()}__LANGUAGE_CODE';
   }
+}
+
+class _I18nState extends Equatable {
+  final Map<AppLanguage, Locale> locale;
+
+  const _I18nState(this.locale);
+
+  @override
+  List<Object> get props => [
+        ...locale.keys.map((langContext) => langContext).toList(),
+        ...locale.values
+            .map((locale) => '${locale?.languageCode}_${locale?.countryCode}')
+            .toList(),
+      ];
 }

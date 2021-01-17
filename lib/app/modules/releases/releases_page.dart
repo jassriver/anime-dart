@@ -1,7 +1,4 @@
-import 'package:anime_dart/app/shared/controllers/value/value_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'releases_controller.dart';
@@ -19,11 +16,8 @@ class _ReleasesModuleState
   // ScrollController _hideButtonController;
   // var _isVisible;
 
-  final _visibleOrNot = ValueController<bool>(initialValue: true);
-
   bool hide = false;
 
-  final _tween = Tween<double>(begin: 0, end: -100);
   AnimationController _controller;
 
   @override

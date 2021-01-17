@@ -52,6 +52,15 @@ class _I18nPageState extends State<I18nPage> {
                 );
               },
             ),
+            ElevatedButton(
+              child: Text('KO-KR'),
+              onPressed: () {
+                _i18nController.setLocale(
+                  context,
+                  Locale('ko', 'kr'),
+                );
+              },
+            ),
             I18nText(
               'ui.continue',
             ),

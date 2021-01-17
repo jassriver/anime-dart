@@ -1,5 +1,5 @@
 ui:
-  continue: Continuar
-  clicked-0: Você clicou {n} vezes!
-  clicked-1: Você clicou {n} vez!
-  clicked-2: Você clicou {n} vezes!
+  continue: "Continuar"
+  clicked-0: "Você clicou {n} vezes!"
+  clicked-1: "Você clicou {n} vez!"
+  clicked-2: "Você clicou {n} vezes!"
