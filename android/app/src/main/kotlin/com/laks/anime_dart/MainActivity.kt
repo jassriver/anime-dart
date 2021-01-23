@@ -1,4 +1,4 @@
-package com.laks.anime_dart
+package dev.laks.anime_dart
 
 import io.flutter.embedding.android.FlutterActivity
 
