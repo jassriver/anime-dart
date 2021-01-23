@@ -1,11 +1,11 @@
-import 'package:anime_dart/app/modules/theme/app_color_scheme.dart';
-import 'package:anime_dart/app/modules/theme/transition_barrier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../shared/state/builders/state_builder.dart';
+import '../../theme/app_color_scheme.dart';
 import '../../theme/theme_controller.dart';
+import '../../theme/transition_barrier.dart';
 import '../home_controller.dart';
 import 'home_content_controller.dart';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:flutter_i18n/widgets/I18nText.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'i18n_controller.dart';
@@ -61,9 +62,7 @@ class _I18nPageState extends State<I18nPage> {
                 );
               },
             ),
-            I18nText(
-              'ui.continue',
-            ),
+            I18nText('ui.continue'),
           ],
         ),
       ),
