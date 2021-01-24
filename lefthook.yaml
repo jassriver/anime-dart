@@ -1,3 +1,8 @@
+prepare-commit-msg:
+  scripts:
+    "template_checker.dart":
+      runner: dart
+
 pre-push:
   parallel: true
   commands:
@@ -7,9 +12,6 @@ pre-push:
       run: flutter analyze
 
 pre-commit:
-  scripts:
-    "good.js":
-      runner: node
   commands:
     pretty:
       glob: "*.dart"

@@ -50,40 +50,18 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           onTap: _valueController.set,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(
-                OMIcons.home,
-                // TODO: Remove raw size
-                size: 30.0,
-              ),
-              activeIcon: Icon(
-                Icons.home,
-                // TODO: Remove raw size
-                size: 30.0,
-              ),
+              icon: Icon(OMIcons.home),
+              activeIcon: Icon(Icons.home),
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                // TODO: Remove raw size
-                Icons.whatshot_outlined,
-                size: 30.0,
-              ),
-              activeIcon: Icon(
-                Icons.whatshot,
-                // TODO: Remove raw size
-                size: 30.0,
-              ),
+              icon: Icon(Icons.whatshot_outlined),
+              activeIcon: Icon(Icons.whatshot),
               label: 'Releases',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                OMIcons.folder,
-                size: 30.0,
-              ),
-              activeIcon: Icon(
-                Icons.folder,
-                size: 30.0,
-              ),
+              icon: Icon(OMIcons.folder),
+              activeIcon: Icon(Icons.folder),
               label: 'Library',
             ),
           ],
