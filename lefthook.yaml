@@ -6,10 +6,10 @@ prepare-commit-msg:
 pre-push:
   parallel: true
   commands:
-    tests:
-      run: flutter test
     linter:
       run: flutter analyze
+    tests:
+      run: flutter test
 
 pre-commit:
   commands:
