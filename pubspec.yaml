@@ -21,7 +21,7 @@ dependencies:
   equatable: ^1.2.5
   vector_math: ^2.0.8
   commit_formatter:
-    path: plugins/commit_formatter
+    git: https://github.com/LaksCastro/commit-formatter
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0

@@ -74,9 +74,11 @@ packages:
   commit_formatter:
     dependency: "direct main"
     description:
-      path: "plugins/commit_formatter"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "06870e2d3a22d6d6b03280d8a333acbc223f608d"
+      url: "https://github.com/LaksCastro/commit-formatter"
+    source: git
     version: "1.0.0+1"
   convert:
     dependency: transitive
