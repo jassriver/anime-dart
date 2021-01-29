@@ -1,4 +1,4 @@
-import 'package:anime_dart/server/utils/random_utils.dart';
+import 'package:anime_dart/server/helpers/utils/random_utils.dart';
 
 import 'package:test/test.dart';
 
