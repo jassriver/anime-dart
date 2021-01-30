@@ -1,7 +1,7 @@
 import 'package:anime_dart/server/helpers/utils/list_utils.dart';
 import 'package:test/test.dart';
 
-void main(List<String> args) {
+void main() {
   group('hasIntersection() method', () {
     test('simple operation', () {
       final a1 = [1, 2, 3, 4];
@@ -28,6 +28,24 @@ void main(List<String> args) {
       expect(hasIntersection(a4, b4), false);
       expect(hasIntersection(a5, b5), false);
       expect(hasIntersection(a6, b6), true);
+    });
+    test('empty context', () {
+      final a1 = [1, 2, 3, 4];
+      final b1 = [];
+
+      final a2 = [];
+      final b2 = [0, 3, 1];
+
+      final a3 = [0];
+      final b3 = [];
+
+      final a4 = [];
+      final b4 = [];
+
+      expect(hasIntersection(a1, b1), false);
+      expect(hasIntersection(a2, b2), false);
+      expect(hasIntersection(a3, b3), false);
+      expect(hasIntersection(a4, b4), false);
     });
   });
 }
